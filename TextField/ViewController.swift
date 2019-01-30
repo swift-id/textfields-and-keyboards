@@ -27,6 +27,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         // emailField.delegate = self
     }
     
+    // Hide the keyboard by press [return] key in keyboard
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == nameField {
             ageField.becomeFirstResponder()
@@ -39,6 +40,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    // Hide the keyboard by tapping on the blank spaces
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
