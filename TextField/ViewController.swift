@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var ageField: UITextField!
@@ -20,6 +20,27 @@ class ViewController: UIViewController {
         nameField.keyboardType = .alphabet
         ageField.keyboardType = .numberPad
         emailField.keyboardType = .emailAddress
+        
+        // Delegates using these codes, or drag connection from inspector
+        // nameField.delegate = self
+        // ageField.delegate = self
+        // emailField.delegate = self
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == nameField {
+            ageField.becomeFirstResponder()
+        } else if textField == ageField {
+            emailField.becomeFirstResponder()
+        } else {
+            emailField.resignFirstResponder()
+        }
+        
+        return true
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
 }
 
